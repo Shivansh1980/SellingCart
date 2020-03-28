@@ -1,0 +1,23 @@
+<------------- MEDIA MOST IMPORTANT ------------>
+
+1.To upload media we need to add two things in the settings.py as we did for static files (refer to statichelp in the static directory to know about this)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+2.Now this will create the media folder inside our outer SellingCart directory
+So this media root will upload whatever we want to upload and then 
+django can fetch that data from the media_url
+
+3.Now go in urls.py and type there :
+
+    (1)from django.conf import settings
+    # now we have now access to those two properties that we defined in settings
+    (2)urlpattern += static(MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+    By this django will know where media files are available from url that we will type onto the browser which can we done in our template as :
+
+        <img src="{{article.thumb.url}}">
+
+        Where thumb is the ImageField(default="default.png") in models.py and articles is class in models.py
+

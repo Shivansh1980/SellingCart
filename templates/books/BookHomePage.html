@@ -1,0 +1,33 @@
+{%extends 'shop/Basic.html' %}
+{% block title %}Download Books{% endblock %}
+{% if user.is_authenticated %}
+{% block body%}
+    <div class="container">
+        <h2 align="center" class="text-primary">{{user.username}}</h2>
+    </div>
+    <div class="table-resposive border rounded">
+      <table class="table border rounded table-dark table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col" class="text-danger p-3 text-center">TITLE</th>
+            <th scope="col" class="text-danger p-3 text-center">AUTHOR</th>
+            <th scope="col" class="text-danger p-3 text-center">DOWNLOAD</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in books %}
+          <tr class="border">
+            <td class="p-3 text-center">{{book.title}}</td>
+            <td class="p-3 text-center">{{book.author}}</td>
+            <td class="p-3 text-center"><a class="btn btn-primary" href="{{book.pdf.url}}" role="button">Download PDF</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+{% endblock %}
+{%else%}
+{% endif %}
+<body>
+  <h2><a href="{% url 'login' %}"> Login First</a></h2> 
+</body>

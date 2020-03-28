@@ -1,0 +1,12 @@
+{%extends 'shop/Basic.html' %}
+{% block title %}Upload Books{% endblock %}
+{% block body%}
+<div class="container">
+<br>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary" >Upload Book</button>
+</form>
+</div>
+{% endblock %}

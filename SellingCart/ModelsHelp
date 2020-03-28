@@ -1,0 +1,24 @@
+Suppose in models.py we have the following code : 
+
+class articles(models.Model):
+    title = models.CharField(max_length=100)
+    slug = models.SlugField()
+    body = models.TextField()
+
+    def__str__(self):
+        return self.title
+    def snippet(self):
+        return self.body[:50]+"..."
+
+Now go in our template from where we can call these methods or function and varriable
+From models using jinja coding for example :
+
+    {% for article in articles%}
+        <div class="article">
+            <h2>{{article.title}}</h2>
+            <p>{{article.body}}</p>
+            <p>{{article.data}}</p>
+        </div>
+    {% endfor %}
+    
+The above code will print the first 50 characters of the body text from each entry in database
