@@ -6,8 +6,9 @@ from django.core.files.storage import FileSystemStorage
 from .forms import BookForm , CreateUserForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate , login
+from django.contrib.auth import authenticate , login, logout
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 
 
@@ -53,3 +54,13 @@ def login_form(request):
             return redirect('ShopHome')
     return render(request, 'books/registration/login.html')
 
+def logout_file(request):
+    logout(request)
+    return redirect('ShopHome')
+
+def search_book(request):
+    if request.method == "GET":
+        srch = request.GET.get('search_book')
+        book = Book.objects.all().filter(Q(title__icontains = srch) | Q(author__icontains = srch))
+        params = {'books':book}
+        return render(request , 'books/BookHomePage.html',params)

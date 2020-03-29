@@ -1,6 +1,21 @@
 {%extends 'shop/Basic.html' %}
 {% block title %}Download Books{% endblock %}
 {% if user.is_authenticated %}
+{% block css%}
+<style>
+  .col-md-3{
+    display: inline-block;
+    margin-left: 5rem;
+    margin-bottom: 3rem;
+  }
+</style>
+{% endblock %}
+{%block search %}
+    <form method="GET" class="form-inline my-2 my-lg-0" action="{% url 'search_book'%}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_book">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+{%endblock%}
 {% block body%}
     <div class="container">
         <h2 align="center" class="text-primary">{{user.username}}</h2>

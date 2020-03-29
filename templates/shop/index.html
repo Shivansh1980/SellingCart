@@ -6,18 +6,24 @@
         margin-left: 5rem;
         margin-bottom: 3rem;
       }
-      .car-img-top img{
-        height: 5rem;
-        width: 5rem;
+      .col-md-3 img{
+        max-width: 240px;
+        height: 240px;
       }
+      
     </style>
     {% endblock %}
+
+    {%block search %}
+    <form method="GET" class="form-inline my-2 my-lg-0" action="{% url 'search'%}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='search'>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    {%endblock%}
 
   {% block body %}
   {% load static %}
 
-    <h1>Carousel</h1>
-    
     <div class="container">
 
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">

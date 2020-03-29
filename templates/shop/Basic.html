@@ -9,13 +9,20 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         
         <title>{% block title %}Selling Cart{% endblock %}</title>
-        {%block css %}{% endblock %}
+        {%block css %}
+        <style>
+            #logout {
+                position: absolute;
+                right: -1;
+              }
+        </style>
+        {% endblock %}
     </head>
     
     <body>
         {% load static %}
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Welcome To Selling Cart</a>
+        <a class="navbar-brand" href="">Welcome To Selling Cart</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,10 +50,8 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            {% block search%}{%endblock%}
+            <a id="logout" href="http://127.0.0.1:8000/books/logout/" class="btn btn-info">Logout</a>
         </div>
         </nav>
         {%block body %}{% endblock %}<!--Body will be Loaded to About.html of shop because there we extends this html-->
