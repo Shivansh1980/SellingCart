@@ -7,7 +7,6 @@ from django.db import models
 # pyhon manage.py makemigrations is used to save changes while migrate is used to commit them in database
 # here database is in our admin pannel where in the product section we get all these fields and from there we can add product
 class Product(models.Model):
-    product_id = models.AutoField
     product_name = models.CharField(max_length=50)
     category = models.CharField(max_length=50, default="")
     subcategory = models.CharField(max_length=50, default="")
@@ -21,3 +20,12 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
+
+class CartItems(models.Model):
+    item_name = models.CharField(max_length=20)
+    item_id = models.CharField(max_length=1000)
+    customer_name = models.CharField(max_length=40)
+    item_image = models.ImageField(upload_to='shop/images', default="")
+    
+    def __str__(self):
+        return self.item_name

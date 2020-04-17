@@ -12,10 +12,7 @@ class BookForm(forms.ModelForm):
     class Meta: # this meta class is used to specify the model
         model = Book
         fields = {'title','author','pdf'}
-class CreateUserForm(UserCreationForm):
-    class Meta : 
-        model = User
-        fields = {'username','email','password1','password2'}
+
 
 
 

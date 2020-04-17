@@ -1,0 +1,48 @@
+{% extends 'shop/Basic.html' %}
+{% block title %}{{product.name}}{% endblock %}
+{% block css%}
+    <style>
+      .col-md-3{
+        display: inline-block;
+        margin-top: 1rem;
+        margin-left: 5rem;
+        margin-bottom: 3rem;
+      }
+
+      img{
+        max-width: 240px;
+        height: 240px;
+      }
+      .col-4{
+          max-width: 340px;
+          height: 300px;
+      }
+      
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <img src="/media/{{product.0.image}}" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-8">
+                <h2 class="text-primary">{{product.0.name}}</h2>
+                <h3 class="text-danger">Description</h3>
+                <p class="text-info">{{product.0.desc}}</p>
+                <p class="text-success"> <b> Price RS: {{product.0.price}}</b></p>
+                <button href="{% url 'ShopHome' %}" class="btn btn-primary">Buy</button>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+{% block javascript%}
+<!--Here We are going to write a function that on click get the product id-->
+<script>
+  $('.cart').click(function(){
+    var pid = thid.id;
+    alert(pid)
+  });
+</script>
+{% endblock %}
