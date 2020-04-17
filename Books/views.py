@@ -3,11 +3,8 @@ from django.http import HttpResponse
 from . models import Book
 from django import forms
 from django.core.files.storage import FileSystemStorage
-from .forms import BookForm , CreateUserForm
+from .forms import BookForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate , login, logout
-from django.contrib.auth.models import User
 from django.db.models import Q
 
 
@@ -29,35 +26,8 @@ def book_upload(request):
     else :
         form = BookForm()
     return render(request , 'books/BookUpload.html' , {'form':form})
-
-def registration_form(request):
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        print(form)
-        print('working')
-        if form.is_valid():
-            form.save()
-            return redirect('login')
-        else :
-            print("Form is not valid")
-    else:
-        form = CreateUserForm()
-    return render(request ,'books/registration/registration.html',{'form':form})
-
-def login_form(request):
-    if(request.method == 'POST'):
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request,username=username,password=password)
-        if(user is not None):
-            login(request,user)
-            return redirect('ShopHome')
-    return render(request, 'books/registration/login.html')
-
-def logout_file(request):
-    logout(request)
-    return redirect('ShopHome')
-
+    
+@login_required(login_url ="login")
 def search_book(request):
     if request.method == "GET":
         srch = request.GET.get('search_book')

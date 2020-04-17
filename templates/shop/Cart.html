@@ -1,0 +1,56 @@
+{% extends 'shop/basic.html' %}
+    {% block css%}
+    <style>
+      .col-md-3{
+        display: inline-block;
+        margin-top: 1rem;
+        margin-left: 5rem;
+        margin-bottom: 3rem;
+      }
+
+      img{
+        max-width: 240px;
+        height: 240px;
+      }
+      
+    </style>
+    {% endblock %}
+{%block body%}
+{% load static %}
+{% if product|length > 0 %}
+<div class="container">
+
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+        <div class="carousel-inner mx-auto" role="listbox">
+
+            <div class="carousel-item active">
+                
+                {% for i in product|slice:"0:"%}
+                <div class="col-md-3 col-xs-3 col-sm-3">
+
+                    <div class="card" style="width: 18rem;">
+                      <img src='/media/{{i.item_image}}' class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{i.item_name}}</h5>
+                          <a id="qv{{i.id}}" href="http://127.0.0.1:8000/shop/productview/{{i.item_id}}" class="btn btn-primary">Quick View</a>
+                          <a id="del{{i.id}}" href="http://127.0.0.1:8000/shop/delete_item/{{i.item_id}}" class="btn btn-primary">Delete Item</a>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% else %}
+<h1 align='center'>No Item In Your Cart</h1>
+{% endif %}
+
+{% endblock %}
+

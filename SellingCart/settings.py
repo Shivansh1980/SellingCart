@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'Books.apps.BooksConfig',
     'shop.apps.ShopConfig', # Whenever you create new app you have to add that here and since we weitten here shop.apps.config so now go in apps.py of shop and define ShopConfig there
     'django.contrib.admin',
@@ -39,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'crispy_forms',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
