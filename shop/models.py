@@ -21,11 +21,10 @@ class Product(models.Model):
         return self.product_name
 
 
-class CartItems(models.Model):
-    item_name = models.CharField(max_length=20)
-    item_id = models.CharField(max_length=1000)
+class CartItem(models.Model):
     customer_name = models.CharField(max_length=40)
-    item_image = models.ImageField(upload_to='shop/images', default="")
+    item_quantity = models.IntegerField(default=1)
+    product_detail = models.ForeignKey(Product , null=True , on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.item_name
+        return self.product_detail.product_name
