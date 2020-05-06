@@ -31,7 +31,7 @@
                 <h3 class="text-danger">Description</h3>
                 <p class="text-info">{{product.0.desc}}</p>
                 <p class="text-success"> <b> Price RS: {{product.0.price}}</b></p>
-                <button href="{% url 'ShopHome' %}" class="btn btn-primary">Buy</button>
+                <a href="{%url 'orderinfo' pid=product.0.id%}" class="btn btn-primary">Buy</a>
             </div>
         </div>
 

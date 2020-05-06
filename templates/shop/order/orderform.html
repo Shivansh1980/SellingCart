@@ -1,0 +1,10 @@
+{% extends 'shop/Basic.html'%}
+{%block css%}{%endblock%}
+{%block body%}
+<div class="container-responsive m-4" align="center">
+<form action="{%url 'orderinfo' pid=id%}" method="POST">
+    {{form.as_p}}
+    <input type="submit">
+</form>
+</div>
+{%endblock%}

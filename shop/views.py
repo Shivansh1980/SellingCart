@@ -1,5 +1,6 @@
 from django.shortcuts import render , redirect
-from .models import Product ,CartItem
+from .models import Product, CartItem
+from .forms import OrderInfo
 from math import ceil
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -86,8 +87,18 @@ def view_cart(request):
     price = 0
     cart = []
     for p in dictionary:
-        price += p.product_detail.price
+        price += p.product_detail.price*p.item_quantity
     for i in products:
         cart.append(i)
     params = { 'product':cart,'items_count':no_of_items,'price':price}
     return render(request, 'shop/Cart.html', params)
+
+@login_required(login_url='login')
+def order_info_page(request,pid):
+    form = OrderInfo()
+    params = {'form': form,'id':pid}   
+    return render(request , 'shop/order/orderform.html', params)
+
+@login_required(login_url='login')
+def order_placed(request,pid):
+    return redirect('shop/order/orderplaced.html') 

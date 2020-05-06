@@ -1,4 +1,5 @@
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 # Here We Will Create Models.
@@ -28,3 +29,16 @@ class CartItem(models.Model):
     
     def __str__(self):
         return self.product_detail.product_name
+
+class OrderForm(models.Model):
+    customer_name = models.CharField(max_length=40)
+    address1 = models.CharField(max_length=800)
+    address2 = models.CharField(max_length=800)
+    city = models.CharField(max_length=100)
+    mobile_no = PhoneNumberField()
+    dilevery_mode = models.CharField(max_length=30)
+    product = models.ForeignKey(Product, null=False, on_delete=models.CASCADE)
+    status = models.CharField(max_length=10)
+
+    def _str_(self):
+        return self.product.product_name
