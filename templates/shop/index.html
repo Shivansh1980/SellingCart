@@ -24,10 +24,10 @@
     {%endblock%}
 
     {% block cart_items %}
-      {{items_count}}
+        <span id="cart_count">{{items_count}}</span>
     {% endblock %}
 
-  {% block body %} 
+  {% block body %}
   {% load static %}
 
     <div class="container">
@@ -44,10 +44,10 @@
                         <div class="card" style="width: 18rem;">
                           <img src='/media/{{i.image}}' class="card-img-top" alt="...">
                             <div class="card-body">
-                              <h5 class="card-title">{{i.product_name}}</h5>
+                              <h5 class="card-title" id="name">{{i.product_name}}</h5>
                               <p class="card-text">{{i.desc}}</p>
-                              <a id="pr{{i.id}}" href="http://127.0.0.1:8000/shop/add_to_cart/{{i.id}}" class="btn btn-primary cart">Add To Cart</a>
-                              <a id="qv{{i.id}}" href="http://127.0.0.1:8000/shop/productview/{{i.id}}" class="btn btn-primary">Quick View</a>
+                              <button onclick="addtocart()" id="{{i.id}}" class="btn btn-primary CartID">Add To Cart</button>
+                              <a id="qv{{i.id}}" href="{%url 'product_view' id=i.id%}" class="btn btn-primary">View Product</a>
                             </div>
                         </div>
 
@@ -65,18 +65,24 @@
 {% block javascript%}
 <!--Here We are going to write a function that on click get the product id-->
 <script>
-  //Till here our Cart is initialized
-  //now will add incremental logic on click of a button
-  $('.cart').click(function(){
-     var idstr = this.id.toString(); //This will fetch the id of the product on which the user clicked
-     if(cart[idstr] != undefined){  //This means when cart is not empty , it means the product already in our cart so we will increment product number of that id
-       cart[idstr]+=1;
-     }
-     else{
-       cart[idstr] = cart[idstr]+1 // if product not in cart then we are adding that product to cart 
-     }
-     localStorage.setItem('cart',JSON.stringify(cart)) //Now we are storing the cart values in local storage so that they will not lost even after we refresh the page
-     document.getElementById('cart').innerHTML = object.Keys(cart).length
-   });
+      $("#cart_count").hover(function(){
+        
+      });
+      $(".CartID").click(function() {
+          var count = parseInt($("#cart_count").text()); 
+          $("#cart_count").html(count);
+          var pid = $(this).attr('id');
+
+          var req = new XMLHttpRequest();
+          var url = "{%url 'addtocart'%}?id="+pid;
+          req.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              count = parseInt(req.responseText);
+              $("#cart_count").html(count);
+            }
+          };
+          req.open("GET", url, true);
+          req.send();
+      });
 </script>
 {% endblock %}

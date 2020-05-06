@@ -38,7 +38,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+                Books
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'uploadbooks' %}">Upload Books</a>
@@ -48,11 +48,11 @@
                 </div>
                 
             </li>
-            <a class="nav-link" href="http://127.0.0.1:8000/shop/viewcart/">Cart <span id="cart">{% block cart_items %}{% endblock %}</span></a>
+            <a class="nav-link" href="{%url 'cartview'%}">Cart {% block cart_items %}{% endblock %}</a>
             </ul>
             {% block search%}{%endblock%}
             <a id="user" href="{% url 'ShopHome' %}" class="btn btn-info">{{user.username}}</a>
-            <a id="logout" href="http://127.0.0.1:8000/accounts/logout/" class="btn btn-danger">Logout</a>
+            <a id="logout" href="{%url 'logout'%}" class="btn btn-danger">Logout</a>
         </div>
         </nav>
         {%block body %}{% endblock %}<!--Body will be Loaded to About.html of shop because there we extends this html-->

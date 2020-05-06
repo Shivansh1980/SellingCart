@@ -17,6 +17,9 @@
     {% endblock %}
 {%block body%}
 {% load static %}
+{% block cart_items %}
+  <span id="cart_count">{{items_count}}</span>
+{% endblock %}
 {% if product|length > 0 %}
 <div class="container">
 
@@ -28,24 +31,25 @@
                 
                 {% for i in product|slice:"0:"%}
                 <div class="col-md-3 col-xs-3 col-sm-3">
-
                     <div class="card" style="width: 18rem;">
-                      <img src='/media/{{i.item_image}}' class="card-img-top" alt="...">
+                      <img src='/media/{{i.product_detail.image}}' class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">{{i.item_name}}</h5>
-                          <a id="qv{{i.id}}" href="http://127.0.0.1:8000/shop/productview/{{i.item_id}}" class="btn btn-primary">Quick View</a>
-                          <a id="del{{i.id}}" href="http://127.0.0.1:8000/shop/delete_item/{{i.item_id}}" class="btn btn-primary">Delete Item</a>
+                          <h5 class="card-title">{{i.product_detail.product_name}}(x{{i.item_quantity}})</h5>
+                          <h4 class="card-title info">Rs.{{i.product_detail.price}}</h4>
+                          <a id="qv{{i.id}}" href="{%url 'product_view' id=i.product_detail_id%}" class="btn btn-primary">View Product</a>
+                          <a id="del{{i.id}}" href="{%url 'deleteitem' pid=i.product_detail_id%}" class="btn btn-primary">Delete Item</a>
                         </div>
                     </div>
-
                 </div>
                 {% endfor %}
+                
 
             </div>
 
         </div>
 
     </div>
+    <h2 class="text-primary" align="center">Total Price : {{price}}</h2>
 
 </div>
 {% else %}
