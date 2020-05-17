@@ -1,10 +1,111 @@
 {% extends 'shop/Basic.html'%}
-{%block css%}{%endblock%}
+{%block css%}
+<style>
+    #design {
+        background-color: lightblue;
+        border: 3px solid black;
+        border-radius: 4px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .form-control{
+        font-size: 20px;
+        height: 50px;
+        width: 200px;
+    }
+    .form-control1{
+        font-size: 20px;
+    }
+    #submiting{
+        margin-bottom:10px;
+        background-color: green;
+        border: 2px solid;
+        font-weight: bold;
+        font-size: 30px;
+    }
+    #show_msg{
+        font-size: 20px;
+        background-color: red;        
+    }
+</style>
+{%endblock%}
 {%block body%}
-<div class="container-responsive m-4" align="center">
+
+<div class="container" id="design" align="center" name="OrderDetail">
+<h1 align="center" id="heading" style="background-color: Yellow;">Order Details</h1>
 <form action="{%url 'orderinfo' pid=id%}" method="POST">
-    {{form.as_p}}
-    <input type="submit">
+    {%csrf_token%}
+    <div id="show_msg"></div>
+    <div class="form-group">
+        <label for="usr" class="form-control1">Phone Number:</label>
+        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]+" placeholder="Enter Phone Number : "> 
+    </div>
+    <div class="form-group">
+        <label for="usr" class="form-control1">Adress Line 1 :</label>
+        <input type="text" class="form-control" id="address1" name="address1" placeholder="Street/House/Colony">
+    </div>
+    <div class="form-group">
+        <label for="usr" class="form-control1">Adress Line 2 :</label>
+        <input type="text" class="form-control" id="address2" name="address2" placeholder="District/Country">
+    </div>
+    <div class="form-group">
+        <label for="usr" class="form-control1">State :</label>
+        <input type="text" class="form-control" id="state" name="state" placeholder="State">
+    </div>
+    <div class="form-group">
+        <select name="mode" id="modeofdilevery">
+            <option value="default">Dilevery Mode </option>
+            <option value="Cash on Dilevery">Cash on Dilevery</option>
+            <option value="Net Banking">Net Banking</option>
+            <option value="UPI">UPI</option>
+        </select>
+    </div>
+    <button type="submit" class="form-control1" id="submiting">Order</button>
 </form>
 </div>
+{%endblock%}
+{%block javascript%}
+    <script>
+        $(document).ready(function(){
+            $('#submiting').hover(function(){
+                $('#submiting').css("background-color","yellow");
+            });
+            $('#submiting').mouseout(function () {
+                $('#submiting').css("background-color", "green");
+            });
+            $('#submiting').click(function(){
+                var phone = $("#phone").val();
+                var address1 = $('#address1').val();
+                var address2 = $('#address2').val();
+                var state = $('#state').val();
+                var mode = $('#modeofdilevery').val();
+                if(phone == ""){
+                    $("#show_msg").html("Please Enter Your Phone Number with correct formate");
+                    $("#show_msg").css("font-size","20px","background-color","red")
+                    return false;
+                }
+                if(address1 == ""){
+                    $("#show_msg").html("Please Fill Addrees1 Line");
+                    $("#show_msg").css("font-size","20px","background-color","red")
+                    return false;
+                }
+                if(address2 == ""){
+                    $("#show_msg").html("Please Fill Address 2 Line ");
+                    $("#show_msg").css("font-size","20px","background-color","red")
+                    return false;
+                }
+                if(state == ""){
+                    $("#show_msg").html("Please enter state");
+                    $("#show_msg").css("font-size","20px","background-color","red")
+                    return false;
+                }
+                if(mode == "default"){
+                    $("#show_msg").html("Please Choose The Mode For Dilevery");
+                    return false;
+                }
+            });
+        });
+    </script>
 {%endblock%}

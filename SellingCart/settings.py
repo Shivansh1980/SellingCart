@@ -26,7 +26,7 @@ SECRET_KEY = 'l)4o5-h$3ar0=tii2pdk190uuo160698gb@ga9g2l+2u&(#o#8'
 DEBUG = True
 
 ################ Here you need to put ALLOWED_HOSTS = [] if something wrong happeninng because due to some error you removed it ####################
-ALLOWED_HOSTS = ["127.0.0.1","192.168.1.4","171.61.47.43"]
+ALLOWED_HOSTS = ["127.0.0.1","192.168.1.5","171.61.47.43"]
 # Application definition
 
 INSTALLED_APPS = [
