@@ -30,11 +30,11 @@ class CartItem(models.Model):
     def __str__(self):
         return self.product_detail.product_name
 
-class OrderForm(models.Model):
+class OrderedProduct(models.Model):
     customer_name = models.CharField(max_length=40)
-    address1 = models.CharField(max_length=800)
-    address2 = models.CharField(max_length=800)
-    city = models.CharField(max_length=100)
+    address1 = models.CharField(max_length=100)
+    address2 = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
     mobile_no = PhoneNumberField()
     dilevery_mode = models.CharField(max_length=30)
     product = models.ForeignKey(Product, null=False, on_delete=models.CASCADE)

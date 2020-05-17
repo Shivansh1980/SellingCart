@@ -1,0 +1,33 @@
+{%extends 'shop/basic.html'%}
+{%block css %}
+<style>
+    #otpform{
+        background-color: lightblue;
+        border: 3px solid black;
+        border-radius: 4px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        padding: 20px;
+    }
+    #submit{
+        font-size: 20px;
+        margin: 10px;
+        background-color: green;
+    }
+    #typetext{
+        font-size: 20px;
+        margin:10px;
+    }
+</style>
+{% endblock %}
+{%block body%}
+    <div class="continer" id="otpform">
+        <h3 align="center" style="background-color: green;">Please Wait Our Service takes time to send OTP</h3>
+        <form action="{%url 'orderplaced' pid=id%}">
+            <p id="typetext">OTP VERIFICATION :</p><input type="text" name="otp" id="form" placeholder="Enter OTP">
+            <button type="submit" id="submit">SUBMIT</button>
+        </form>
+    </div>
+{%endblock%}

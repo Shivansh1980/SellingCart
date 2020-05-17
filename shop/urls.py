@@ -16,5 +16,5 @@ urlpatterns = [
     path("viewcart/",views.view_cart,name='cartview'),
     path("delete_item/<int:pid>", views.delete_item, name='deleteitem'),
     path("orderinfo/<int:pid>", views.order_info_page, name='orderinfo'),
-    path("orderplaced/<int:pid>",views.order_placed,name='orderplaced'),
+    path("otpverification/<int:pid>", views.otpview, name="otpverification"),
 ]
