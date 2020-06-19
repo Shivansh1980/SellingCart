@@ -15,45 +15,51 @@
                 position: absolute;
                 right: -1;
               }
-
         </style>
         {% endblock %}
     </head>
     
     <body>
         {% load static %}
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="">Welcome To Selling Cart</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'ShopHome'%}">Home<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Books
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{% url 'uploadbooks' %}">Upload Books</a>
-                <a class="dropdown-item" href="{% url 'book_list'%}">Download Books</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-                
-            </li>
-            <a class="nav-link" href="{%url 'cartview'%}">Cart {% block cart_items %}{% endblock %}</a>
-            </ul>
-            {% block search%}{%endblock%}
-            <a id="user" href="{% url 'ShopHome' %}" class="btn btn-info">{{user.username}}</a>
-            <a id="logout" href="{%url 'logout'%}" class="btn btn-danger">Logout</a>
+        <div id="main" style="background-color:cyan">
+            <h1 align="center" style="color:green;"> Selling Cart </h1><p style="color:red;font-size:20px;text-align:center;" align="center">( Created by Shivansh Shrivastava IT 2nd year)</p>
         </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="">Welcome To Selling Cart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'ShopHome'%}">Home<span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'AboutUS' %}">About</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Books</a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'uploadbooks' %}">Upload Books</a>
+                            <a class="dropdown-item" href="{% url 'book_list'%}">Download Books</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+
+                    </li>
+
+                    <a class="nav-link" href="{%url 'cartview'%}">Cart {% block cart_items %}{% endblock %}</a>
+                </ul>
+                {% block search%}{%endblock%}
+                <a id="user" href="{% url 'ShopHome' %}" class="btn btn-info">{{user.username}}</a>
+                <a id="logout" href="{%url 'logout'%}" class="btn btn-danger">Logout</a>
+            </div>
         </nav>
         {%block body %}{% endblock %}<!--Body will be Loaded to About.html of shop because there we extends this html-->
     </body>
