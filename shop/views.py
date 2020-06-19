@@ -28,7 +28,7 @@ def index(request):
     return render(request, 'shop/index.html', params)
 
 def about(request):
-    return render(request, 'shop/about.html')
+    return HttpResponse("<p style='font-size:40px' text-color:red;>This Website Officially created by Shivansh Shrivastava</p><p style='font-size:20px'>Note: Buying items after adding to Cart is Under Development but you can buy by clicking on view product</p><p>Click on back button to go back to site</p>")
 
 def contact(request):
     return HttpResponse("We are at contact")
