@@ -37,8 +37,9 @@ def tracker(request):
     return HttpResponse("We are at tracker")
 
 def search(request):
-    if(request.method == "POST"):
-        cat = request.POST.POST('search')
+    products = list()
+    if (request.method == "GET"):
+        cat = request.GET['search']
         products = Product.objects.all().filter(Q(category__icontains = cat) | Q(product_name__icontains = cat))
         if products is None:
             print('No Product Found')

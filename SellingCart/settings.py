@@ -24,10 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'l)4o5-h$3ar0=tii2pdk190uuo160698gb@ga9g2l+2u&(#o#8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ################ Here you need to put ALLOWED_HOSTS = [] if something wrong happeninng because due to some error you removed it ####################
-ALLOWED_HOSTS = ["127.0.0.1", "192.168.1.5", "4ce5e4a4791d.ngrok.io"]
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.1.5","localhost","2007cfe4b453.ngrok.io"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -125,5 +125,5 @@ STATIC_URL = '/static/'
 
 # Managing media
 # one directory up to the base directory we will make the media directory there using below line of media root
-MEDIA_ROOT = os.path.join(BASE_DIR,'media') # Its a container where the user will upload the media in this media directory(os.path.join is used to join to directory) (here the BASE_DIR means the main directory selling cart which is joined with media directory)
+MEDIA_ROOT = os.path.join(BASE_DIR,'media') # Its a container where the user will upload the media in this media directory(os.path.join is used to join the directory) (here the BASE_DIR means the main directory selling cart which is joined with media directory)
 MEDIA_URL = '/media/'                       # it provide the url to the user to upload the media in the django admin pannel . To do this you have to update the urls of the BASE_DIR and have to add these lists to the urlpatters
