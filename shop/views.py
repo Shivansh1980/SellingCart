@@ -49,6 +49,7 @@ def search(request):
 def productview(request,id):
     print(request.user)
     product = Product.objects.filter(id=id)
+
     context = {'product':product}
     return render(request,'shop/productView.html',context)
 
@@ -80,6 +81,8 @@ def delete_item(request,pid):
     item.delete()
     return redirect('cartview')
 
+
+    
 @login_required(login_url='login')
 def view_cart(request):
     products = CartItem.objects.all().filter(customer_name=request.user)
@@ -95,47 +98,58 @@ def view_cart(request):
     params = { 'product':cart,'items_count':no_of_items,'price':price}
     return render(request, 'shop/Cart.html', params)
 
-
-def generate_otp():
-    data = "01234567890"
-    length = len(data)
-    otp = ""
-    for i in range(5):
-        otp += data[math.floor(random.random() * length)]
-    return otp
-
-def sendPostRequest(reqUrl, apiKey, secretKey, useType, phoneNo, senderId, textMessage):
-    req_params = {
-        'apikey': apiKey,
-        'secret': secretKey,
-        'usetype': useType,
-        'phone': phoneNo,
-        'message': textMessage,
-        'senderid': senderId
-    }
-    return requests.post(reqUrl, req_params)
-
-def send_otp(phone,otp):
-    URL = 'https://www.sms4india.com/api/v1/sendCampaign'
-
-    # get response
-    response = sendPostRequest(URL, '0ZJ9Z6WT1UQ2YZWRKPEY7Z9O5APMPP6K', 'GW6NVE5OK3ZPL1B7',
-                               'stage', phone, 'SellingCart', otp)
-    print(response.text)
-
 @login_required(login_url='login')
-def otpview(request):
+def order_from_cart(request):
+    products = CartItem.objects.all().filter(customer_name=request.user)
+    ordered_item = []
+    for i in products:
+        ordered_item.append(i)
+    price = int(0)
+    for i in ordered_item:
+        price += i.product_detail.price
+    print(products)
+    print(ordered_item)
+    details_of_product = {'product': ordered_item, 'price': price}
+    return render(request, "shop/order/cartorderform.html", details_of_product)
+
+
+def place_order_of_cart_item(request):
+    products = CartItem.objects.all().filter(customer_name=request.user)
+    product = []
+    for i in products:
+        items = Product.objects.get(id=i.product_detail.id)
+        product.append(items)
+    print("Products which are going to be order : ", product)
+    
     if (request.method == "POST"):
-        rec = request.POST['otp']
-        if (rec == otp):
-            order_details.save()
-        else:
-            return HttpResponse("<h1 class='text-success' align='center'>OTP VERIFICATION FAILED</h1>")
-    return render(request, "shop/order/orderplaced.html")
+        a1 = request.POST['address1']
+        a2 = request.POST['address2']
+        phone = request.POST['phone']
+        state = request.POST['state']
+        mode = request.POST['mode']
+        for item in product:
+            order_details = OrderInfo(
+                customer_name=request.user,
+                address1=a1,
+                address2=a2,
+                state=state,
+                mobile_no=phone,
+                dilevery_mode=mode,
+                product=item,
+                status="active"
+            )
+    params = {'product': product}
+    return render(request, "shop/order/orderplaced.html", params)
+
+#ordeinfo page means the product which is going to order page. This will be called when User click on
+# Order button on the form page.
 @login_required(login_url='login')
 def order_info_page(request, pid):
     params = {'id': pid}
-    product = Product.objects.get(id=pid)
+    products = Product.objects.all().filter(id=pid)
+    product = []
+    for i in products:
+        product.append(i)
     if (request.method == "POST"):
         a1 = request.POST['address1']
         a2 = request.POST['address2']
@@ -156,8 +170,48 @@ def order_info_page(request, pid):
         # Generating OTP and Sending it as Message
         send_otp(phone, "Order Has Been Placed SuccessFullly , Thanks For Using SellingCart")
         order_details.save()
-        params = {'id': pid}
+        params = {'product':product,'id': pid}
         return render(request, 'shop/order/orderplaced.html', params)
         
-    return render(request , 'shop/order/orderform.html', params)
+    return render(request, 'shop/order/orderform.html', params)
 
+
+def generate_otp():
+    data = "01234567890"
+    length = len(data)
+    otp = ""
+    for i in range(5):
+        otp += data[math.floor(random.random() * length)]
+    return otp
+
+
+def sendPostRequest(reqUrl, apiKey, secretKey, useType, phoneNo, senderId, textMessage):
+    req_params = {
+        'apikey': apiKey,
+        'secret': secretKey,
+        'usetype': useType,
+        'phone': phoneNo,
+        'message': textMessage,
+        'senderid': senderId
+    }
+    return requests.post(reqUrl, req_params)
+
+
+def send_otp(phone, otp):
+    URL = 'https://www.sms4india.com/api/v1/sendCampaign'
+
+    # get response
+    response = sendPostRequest(URL, '0ZJ9Z6WT1UQ2YZWRKPEY7Z9O5APMPP6K', 'GW6NVE5OK3ZPL1B7',
+                               'stage', phone, 'SellingCart', otp)
+    print(response.text)
+
+
+@login_required(login_url='login')
+def otpview(request):
+    if (request.method == "POST"):
+        rec = request.POST['otp']
+        if (rec == otp):
+            order_details.save()
+        else:
+            return HttpResponse("<h1 class='text-success' align='center'>OTP VERIFICATION FAILED</h1>")
+    return render(request, "shop/order/orderplaced.html")

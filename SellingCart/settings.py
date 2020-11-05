@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
-    'blog',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -58,7 +57,7 @@ ROOT_URLCONF = 'SellingCart.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['templates',os.path.join(BASE_DIR,'blog/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,9 +120,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
-
 # Managing media
 # one directory up to the base directory we will make the media directory there using below line of media root
 MEDIA_ROOT = os.path.join(BASE_DIR,'media') # Its a container where the user will upload the media in this media directory(os.path.join is used to join the directory) (here the BASE_DIR means the main directory selling cart which is joined with media directory)
-MEDIA_URL = '/media/'                       # it provide the url to the user to upload the media in the django admin pannel . To do this you have to update the urls of the BASE_DIR and have to add these lists to the urlpatters
+MEDIA_URL = '/media/'  # it provide the url to the user to upload the media in the django admin pannel . To do this you have to update the urls of the BASE_DIR and have to add these lists to the urlpatters
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    '/static',
+    os.path.join(BASE_DIR, 'blog/build/static'),
+]
