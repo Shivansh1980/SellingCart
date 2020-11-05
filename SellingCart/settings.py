@@ -127,6 +127,5 @@ MEDIA_URL = '/media/'  # it provide the url to the user to upload the media in t
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    '/static',
     os.path.join(BASE_DIR, 'blog/build/static'),
 ]

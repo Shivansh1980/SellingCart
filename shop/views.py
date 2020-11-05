@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q,Max,Sum
 from channels.routing import ProtocolTypeRouter
-import json , requests ,math , random
+import json , requests ,math , random , os
 
 # import Q is used for the search functionality here Q accepts the parameter 
 # that are available in the models.py with __icontains as extension and search that (Read more about this at last of your java copy)
