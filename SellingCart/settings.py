@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework',
     'corsheaders',
+    'api.apps.ApiConfig'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,10 +128,11 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 # Managing media
 # one directory up to the base directory we will make the media directory there using below line of media root
-MEDIA_ROOT = os.path.join(BASE_DIR,'media') # Its a container where the user will upload the media in this media directory(os.path.join is used to join the directory) (here the BASE_DIR means the main directory selling cart which is joined with media directory)
+MEDIA_ROOT = os.path.join(BASE_DIR,'blog/build/static/media') # Its a container where the user will upload the media in this media directory(os.path.join is used to join the directory) (here the BASE_DIR means the main directory selling cart which is joined with media directory)
 MEDIA_URL = '/media/'  # it provide the url to the user to upload the media in the django admin pannel . To do this you have to update the urls of the BASE_DIR and have to add these lists to the urlpatters
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static'),
     os.path.join(BASE_DIR, 'blog/build/static'),
 ]

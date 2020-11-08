@@ -20,7 +20,7 @@
     <form method="GET" class="form-inline my-2 my-lg-0" action="{% url 'search'%}">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='search'>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+    </form>
     {%endblock%}
 
     {% block cart_items %}
@@ -37,7 +37,6 @@
             <div class="carousel-inner mx-auto" role="listbox">
 
                 <div class="carousel-item active">
-
                     {% for i in product|slice:"0:"%}
                     <div class="col-md-3 col-xs-3 col-sm-3">
 
