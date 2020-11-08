@@ -27,7 +27,7 @@ SECRET_KEY = 'l)4o5-h$3ar0=tii2pdk190uuo160698gb@ga9g2l+2u&(#o#8'
 DEBUG = True
 
 ################ Here you need to put ALLOWED_HOSTS = [] if something wrong happeninng because due to some error you removed it ####################
-ALLOWED_HOSTS = ["127.0.0.1", "192.168.1.5","localhost","2007cfe4b453.ngrok.io"]
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.1.5","localhost", "polished-morning-29118.pktriot.net"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    'rest_framework',
+    'corsheaders',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -50,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'SellingCart.urls'
@@ -115,6 +118,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Static files (CSS, JavaScript, Images)
