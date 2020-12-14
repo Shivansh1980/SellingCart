@@ -1,19 +1,7 @@
 {% extends 'shop/basic.html' %}
+ {% load static %}
     {% block css%}
-    <style>
-      .col-md-3{
-        display: inline-block;
-        margin-top: 1rem;
-        margin-left: 5rem;
-        margin-bottom: 3rem;
-      }
-
-      img{
-        max-width: 240px;
-        height: 240px;
-      }
-      
-    </style>
+    <link rel="stylesheet" href="{%static 'css/productlist.css'%}">
     {% endblock %}
 
     {%block search %}
@@ -28,38 +16,21 @@
     {% endblock %}
 
   {% block body %}
-  {% load static %}
-
-    <div class="container">
-
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-
-            <div class="carousel-inner mx-auto" role="listbox">
-
-                <div class="carousel-item active">
-                    {% for i in product|slice:"0:"%}
-                    <div class="col-md-3 col-xs-3 col-sm-3">
-
-                        <div class="card" style="width: 18rem;">
-                          <img src='/media/{{i.image}}' class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title" id="name">{{i.product_name}}</h5>
-                              <p class="card-text">{{i.desc}}</p>
-                              <button onclick="addtocart()" id="{{i.id}}" class="btn btn-primary CartID">Add To Cart</button>
-                              <a id="qv{{i.id}}" href="{%url 'product_view' id=i.id%}" class="btn btn-primary">View Product</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    {% endfor %}
-
-                </div>
-
-            </div>
-
-        </div>
-
+  <div class="container">
+    <div class="items">
+      {% for i in product|slice:"0:"%}
+          <div class="card" style="width: 18rem;">
+            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" id="name">{{i.product_name}}</h5>
+                <p class="card-text">{{i.desc}}</p>
+                <button onclick="addtocart()" id="{{i.id}}" class="btn btn-primary CartID">Add To Cart</button>
+                <a id="qv{{i.id}}" href="{%url 'product_view' id=i.id%}" class="btn btn-primary">View Product</a>
+              </div>
+          </div>
+      {% endfor %}
     </div>
+  </div>
 {% endblock %}
 {% block javascript%}
 <!--Here We are going to write a function that on click get the product id-->

@@ -1,0 +1,65 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+#body{
+    background-color: rgb(214, 100, 100);
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-text{
+    background-color: whitesmoke;
+    color:brown;
+    font-weight: bold;
+    border-bottom: 6px solid brown;
+}
+.login-box {
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10%;
+    padding:30px;
+    width:40%;
+    background: linear-gradient(to right, lightpink 0%,rgb(31, 2, 6) 50%,rgb(37, 25, 3) 50%,rgb(167, 28, 69) 100%);
+    box-shadow: 0 0 50px red;
+}
+.flexbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+.flexbox input{
+    background: linear-gradient(to right, lightpink 0%,rgb(31, 2, 6) 50%,rgb(37, 25, 3) 50%,rgb(167, 28, 69) 100%);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color:white;
+    border-radius: 5%;
+    border: 2px solid brown;
+    padding: 6px;
+}
+.flexbox button{
+    border-radius: 15%;
+    padding:10px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(151, 73, 86);
+}
+
+@media (max-width: 600px){
+    .flexbox{
+        font-size: 15px;
+    }
+	.flexbox input{
+		width: 99%;
+    }
+    .login-box{
+        height: 50%;
+        margin: auto auto;
+    }
+    .flexbox input, .flexbox button{
+        font-size: 10px;
+    }
+}
