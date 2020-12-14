@@ -7,9 +7,19 @@ img{
     grid-template-columns: repeat(3,1fr);
     grid-gap:20px;
 }
+.card{
+    padding: 5px;
+    border: 1px solid green;
+    border-radius: 5%;
+}
+.card:hover{
+    background: yellow;
+    box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green;
+}
 
-@media only screen and (max-width:800px){
+@media only screen and (max-width:900px){
     .container{
+        margin-top: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
