@@ -7,11 +7,27 @@ img{
     grid-template-columns: repeat(3,1fr);
     grid-gap:20px;
 }
-.navbar{
-    width: 100%;
-}
 
-@media only screen and (max-width:600px){
+@media only screen and (max-width:800px){
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .items{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+
+}
+@media only screen and (max-width:650px){
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
     .items{
         display: grid;
         grid-template-columns: repeat(1,1fr);

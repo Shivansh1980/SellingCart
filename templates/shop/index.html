@@ -18,14 +18,14 @@
   {% block body %}
   <div class="container">
     <div class="items">
-      {% for i in product|slice:"0:"%}
+      {% for pr in product|slice:"0:"%}
           <div class="card" style="width: 18rem;">
-            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+            <img src='/media/{{pr.image}}' class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title" id="name">{{i.product_name}}</h5>
-                <p class="card-text">{{i.desc}}</p>
-                <button onclick="addtocart()" id="{{i.id}}" class="btn btn-primary CartID">Add To Cart</button>
-                <a id="qv{{i.id}}" href="{%url 'product_view' id=i.id%}" class="btn btn-primary">View Product</a>
+                <h5 class="card-title" id="name">{{pr.product_name}}</h5>
+                <p class="card-text">{{pr.desc}}</p>
+                <button onclick="addtocart()" id="{{pr.id}}" class="btn btn-primary CartID">Add To Cart</button>
+                <a id="qv{{i.id}}" href="{%url 'product_view' id=pr.id%}" class="btn btn-primary">View Product</a>
               </div>
           </div>
       {% endfor %}
