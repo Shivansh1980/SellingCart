@@ -11,19 +11,28 @@
 <body id="body">
 	<form class="login-box" method="POST" enctype="multipart/form-data">
 		{%csrf_token%}
-		<span id="login-text">Login Form</span>
 		<div class="flexbox">
-			<p>Hi What's Your name ? </p>
+			<span id="login-text" style="font-size: 30px;">Login Form</span>
+			<p>Hi, Enter Credentials</p>
 			<p>Username</p>
 			<input id="username" name="username" type="text" placeholder="Username">
 			<p>Password</p>
 			<input id="password" type="password" name="password" placeholder="Password">
-			<button onclick="login()" type="submit">Login</button>
-		</div>
+			<div>
+				<button onclick="return login()" type="submit">Login</button>
+				<a href="{%url 'registration'%}">SignUp</a>
+			</div>
 	</form>
 </body>
 <script>
 	function login() {
+		var username = document.getElementById('username').value
+		var password = document.getElementById('password').value
+		if(username == "" || password== ""){
+			alert("please enter username and password")
+			return false;
+		}
+		else return true;
 	}
 </script>
 
