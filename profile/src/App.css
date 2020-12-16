@@ -1,6 +1,63 @@
-.App {
+:root{
+  background-color: black;
+  color:white;
+}
+*{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+.App{
+  margin: 10px 10px;
+}
+.Header {
+  text-align: center;
+  background:rgb(21, 21, 24);
+}
+.Header h1{
+  color: white;
+  line-height: 70px;
+}
+.SideNavbar{
+  position: fixed;
+  margin: 10px;
+  left: 10px;
+  background-color: darkblue;
+}
+.SideNavbar ul{
   display: flex;
+  flex-direction: column;
+  padding: 5px;
+  background-color: green;
+}
+.SideNavbar ul li {
+  display: block;
+  background-color: yellow;
+  border:1px solid red;
+}
+.SideNavbar ul li:hover {
+  background-color: white;
+  font-weight: bold;
+  height: 40px;
+}
+
+.SideNavbar ul li a {
+  width: 100%;
+  display: block;
+  text-align: center;
+  line-height: 30px;
+  
+}
+.HomeView{
+  display: flex;
+  margin: 5px;
   align-items: center;
   justify-content: center;
-  background:green;
+  width: 100%;
+  background-color: green;
+}
+
+.Main{
+  display: flex;
 }
