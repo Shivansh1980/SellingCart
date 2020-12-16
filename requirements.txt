@@ -114,7 +114,7 @@ pyasn1-modules==0.2.8
 PyAudio @ file:///C:/Users/ASUS/pipwin/PyAudio-0.2.11-cp38-cp38-win_amd64.whl
 pycodestyle==2.5.0
 pycparser==2.20
-pycryptodome==3.4.3
+pycryptodome==3.6.6
 PyHamcrest==2.0.2
 PyInstaller==3.6
 pyjsparser==2.7.1
