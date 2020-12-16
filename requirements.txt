@@ -18,7 +18,7 @@ chardet==3.0.4
 colorama==0.4.3
 comtypes==1.1.7
 constantly==15.1.0
-cryptography==2.9
+cryptography==3.2
 daphne==2.5.0
 distlib==0.3.0
 dj-database-url==0.5.0
