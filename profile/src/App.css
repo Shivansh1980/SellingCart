@@ -9,53 +9,86 @@
   text-decoration: none;
 }
 .App{
-  margin: 10px 10px;
+  margin: 10px;
 }
 .Header {
   text-align: center;
   background:rgb(21, 21, 24);
 }
 .Header h1{
-  color: white;
   line-height: 70px;
+
 }
+.HomeView .introduction{
+  color: white;
+}
+.text-info1{
+  font-size: 30px;
+  animation:text 2s 1;
+
+}
+
 .SideNavbar{
-  position: fixed;
-  margin: 10px;
-  left: 10px;
   background-color: darkblue;
+  border: 10px solid black;
+  display: flex;
+  flex-direction: column;
 }
 .SideNavbar ul{
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   padding: 5px;
-  background-color: green;
+  height: 100%;
 }
-.SideNavbar ul li {
-  display: block;
-  background-color: yellow;
-  border:1px solid red;
+.SideNavbar ul li img{
+  width: 70px;
 }
 .SideNavbar ul li:hover {
-  background-color: white;
+  background-color: black;
   font-weight: bold;
-  height: 40px;
+  width:auto;
+  padding: 5px 10px;
 }
 
 .SideNavbar ul li a {
-  width: 100%;
   display: block;
+  color:white;
   text-align: center;
-  line-height: 30px;
-  
+  font-size: 25px;
 }
+
 .HomeView{
+  margin-top: 10px;
   display: flex;
-  margin: 5px;
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: green;
+}
+.HomeView p{
+  font-weight: bolder;
+}
+.HomeView img{
+  width:30em;
+  animation:text 2s 1;
+}
+@keyframes text {
+  0%{
+    color:darkblue;
+    letter-spacing: 2px;
+    margin-bottom: -40px;
+    width:30em;
+  }
+  30%{
+    letter-spacing: 10px;
+    margin: -40px;
+    width:25em;
+  }
+  85%{
+    letter-spacing: 0px;
+    margin-bottom: -40px;
+    width:30em;
+  }
 }
 
 .Main{

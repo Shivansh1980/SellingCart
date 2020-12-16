@@ -4,10 +4,16 @@ export class HomeView extends Component {
     render() {
         return (
             <div className="HomeView">
-                <h1>Main Content</h1>
+                <div className="ShivanshImage">
+                    <img src={process.env.PUBLIC_URL + "/static/images/shivansh.png"} alt="shivansh" />
+                    <h2 id="name" align="center">Shivansh Shrivastava</h2>
+                </div>
+                <p className="introduction" align="center">
+                    <span className="text-info1">Hello, My name is Shivansh <br/>Shrivastava.</span> <br />
+                    <span className="text-info1">I am a student of B.Tech 3rd <br />Year.</span>
+                </p>
             </div>
         )
     }
 }
-
 export default HomeView

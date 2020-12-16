@@ -5,6 +5,8 @@ export class SideNavbar extends Component {
         return (
             <div className="SideNavbar">
                 <ul>
+                    
+                    <li><img src={process.env.PUBLIC_URL + "/static/images/shivansh.png"} alt="shivansh"/></li>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Skills</a></li>
                     <li><a href="#">Projects</a></li>
