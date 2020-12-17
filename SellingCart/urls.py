@@ -25,7 +25,7 @@ urlpatterns = [
     path('shop/', include('shop.urls')),
     path('books/',include('Books.urls')),
     path('accounts/', include('accounts.urls')),
-    path('blog/', TemplateView.as_view(template_name = 'index.html')),
+    path('profile/', TemplateView.as_view(template_name = 'index.html')),
     path("api/",include('api.urls'))
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

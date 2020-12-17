@@ -25,7 +25,7 @@ def index(request):
         no_of_items = max_item_dict['item_quantity__sum']
     products = Product.objects.all()
     params = {'product': products,'items_count':no_of_items}
-    return render(request, 'shop/index.html', params)
+    return render(request, 'shop/home.html', params)
 
 def about(request):
     return HttpResponse("<p style='font-size:40px' text-color:red;>This Website Officially created by Shivansh Shrivastava</p><p style='font-size:20px'>Note: Buying items after adding to Cart is Under Development but you can buy by clicking on view product</p><p>Click on back button to go back to site</p>")
@@ -43,7 +43,7 @@ def search(request):
         products = Product.objects.all().filter(Q(category__icontains = cat) | Q(product_name__icontains = cat))
         if products is None:
             print('No Product Found')
-    return render(request,'shop/index.html',{'product':products})
+    return render(request,'shop/home.html',{'product':products})
 
 @login_required(login_url='login')
 def productview(request,id):
