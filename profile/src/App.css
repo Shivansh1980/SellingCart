@@ -15,21 +15,21 @@
   background: linear-gradient(transparent,#30ff00);
 }
 ::-webkit-scrollbar-thumb:hover{
-  background: linear-gradient(transparent,#00c6ff);
+  background: linear-gradient(transparent,#181d47);
 }
 .App{
   margin: 5px;
 }
 .Header {
   text-align: center;
-  margin-left: 105px;
+  margin-left: 100px;
   width: auto;
-  margin-right:5px;
+  margin-right:10px;
   background:rgb(21, 21, 24);
+  box-shadow: 0 0 10px rgb(86, 22, 223);
 }
 .Header h1{
   line-height: 70px;
-
 }
 .HomeView .introduction{
   color: white;
@@ -45,17 +45,22 @@
   position: fixed;
   float:left;
   height: 100%;
+  box-shadow: 0 0 10px rgb(147, 147, 238);
+  width: 80px;
 }
 .SideNavbar ul{
+  padding: 5px;
+}
+.SideNavbar ul li{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   padding: 5px;
 }
 .SideNavbar ul li:hover {
   background-color: black;
   font-weight: bold;
-  width:auto;
   padding: 5px 10px;
 }
 .SideNavbar ul li img{
@@ -65,7 +70,7 @@
   display: block;
   color:white;
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -92,8 +97,12 @@
   animation:text 2s 1;
 }
 @media (max-width: 600px) {
-  .Main{
-    margin-left: 110px;
+  .Header{
+    padding: 5px;
+  }
+  .Header h1{
+    font-size: 25px;
+    line-height: 35px;
   }
   .HomeView{
     display: flex;
@@ -149,11 +158,12 @@
   background-color: black;
 }
 .bar div{
-  background-color: yellow;
+  background: rgb(9,0,36);
+  background: linear-gradient(90deg, rgba(9,0,36,0) 0%, rgba(9,121,10,1) 0%, rgba(0,117,255,1) 100%);
   border-radius:5px;
-  animation: skilltext 3s 2;
+  animation: skill 3s 2;
 }
-@keyframes skilltext{
+@keyframes skill{
   0%{
     color: red;
     background-color: violet;
