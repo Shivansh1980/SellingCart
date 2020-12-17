@@ -9,5 +9,4 @@ export class ProjectView extends Component {
         )
     }
 }
-
 export default ProjectView
