@@ -10,6 +10,7 @@ export class SkillsView extends Component {
         android: 80,
         cpp: 90,
         competitive: 50,
+        ethicalhacking:66,
         kalilinux:70
     }
     render() {
@@ -66,14 +67,14 @@ export class SkillsView extends Component {
                     <div className="Barbox">
                         <p>Competitive Programing</p>
                         <div className="bar">
-                            <div className="Competitive" style={{ width: this.state.djangorestframework + "%" }}></div>
+                            <div className="Competitive" style={{ width: this.state.competitive + "%" }}></div>
                             <p>50%</p>
                         </div>
                     </div>
                     <div className="Barbox">
                         <p>Ethical Hacking</p>
                         <div className="bar">
-                            <div className="EthicalHacking" style={{ width: this.state.python + "%" }}></div>
+                            <div className="EthicalHacking" style={{ width: this.state.ethicalhacking + "%" }}></div>
                             <p>66%</p>
                         </div>
                     </div>
