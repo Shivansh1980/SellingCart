@@ -3,7 +3,9 @@ import './App.css';
 import Header from './components/Header';
 import SideNavbar from './components/SideNavbar';
 import HomeView from './components/HomeView';
-import Skills, { SkillsView } from './components/SkillsView'
+import SkillsView from './components/SkillsView'
+import ContactView from './components/ContactView'
+
 function App() {
   return (
     <div className="App">
@@ -12,6 +14,7 @@ function App() {
       <main className="Main">
         <HomeView></HomeView>
         <SkillsView></SkillsView>
+        <ContactView />
       </main>
     </div>
   );
