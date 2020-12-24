@@ -4,6 +4,7 @@ html{
 :root{
   background-color: black;
   color:white;
+  box-sizing: border-box;
 }
 *{
   padding: 0;
@@ -203,7 +204,7 @@ html{
   background-color: rgb(172, 29, 29);
   border-radius: 5px;
   align-self: flex-start;
-  animation: animateButton 10s infinite;
+  animation: animateButton 7s infinite;
 }
 @keyframes animateButton{
   0%{
@@ -221,4 +222,33 @@ html{
   100%{
     background-color: rgb(226, 150, 63);
   }
+}
+
+.ProjectView{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  margin-left: 50px;
+  grid-gap: 10px;
+  color: blue;
+}
+.project {
+  display: grid;
+  justify-content: center;
+  max-width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  height: 300px;
+  padding: 20px;
+}
+@media only screen and (max-width:800px){
+  .ProjectView{
+    grid-template-columns: repeat(2,1fr);
+  }
+  
+}
+@media only screen and (max-width:600px){
+  .ProjectView{
+    grid-template-columns: repeat(1,1fr);
+  }
+  
 }

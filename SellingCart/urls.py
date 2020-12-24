@@ -18,6 +18,13 @@ from django.urls import path , include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from rest_framework.routers import DefaultRouter
+from api.viewset import ProductModelViewSet
+
+router = DefaultRouter()
+#now we will register product viewset with router
+router.register('productapi',ProductModelViewSet,basename='student')
+
 
 urlpatterns = [
     path('admin/',admin.site.urls),
@@ -26,6 +33,6 @@ urlpatterns = [
     path('books/',include('Books.urls')),
     path('accounts/', include('accounts.urls')),
     path('profile/', TemplateView.as_view(template_name = 'index.html'),name='Profile'),
-    path("api/",include('api.urls'))
+    path("api/",include(router.urls)),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

@@ -8,13 +8,3 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from shop.models import Product
 from .serializers import ProductSerializer
-
-# Create your views here.
-@api_view(['GET'],)
-def api_get_products(request):
-    products = Product.objects.all()
-    serializer = ProductSerializer(products, many=True)
-    return Response(serializer.data)
-
-def api_put_products(request):
-    pass
