@@ -14,7 +14,7 @@ export class ContactView extends Component {
 
     render() {
         return (
-            <div className="ContactForm">
+            <div id="Contact" className="ContactForm">
                 <p>For any extra information. Send me message </p>
                 <div>
 

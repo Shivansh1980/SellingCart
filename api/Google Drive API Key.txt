@@ -1,0 +1,19 @@
+API KEY : AIzaSyA2oWX_nqfvdvryMgG6uHyM6vQqE86hhJU
+
+RyzenShivansh
+OuthClientId : 
+826384769912-qpelbp2qt6pkeqj50nm3fvbvs1qlede1.apps.googleusercontent.com
+
+
+Client_Secret : 
+M_OSHnss7T_iGfHAo9rmd8Oi
+
+
+
+WEB_CLIENT-2 :
+
+OuthClientId:
+826384769912-026bi5n2pvqbti4msu1debpeml4j3gml.apps.googleusercontent.com
+
+Client_Secret:
+H7PzZTsrI-eu0ts9TpaWfToJ

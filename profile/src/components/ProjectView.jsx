@@ -5,8 +5,9 @@ export class ProjectView extends Component {
         return (
             <div className="project">
                 <div className="project-header">
-                    <h2>{this.props.project.name}</h2>
-                    <img src={this.props.project.url} alt={this.props.project.name+"_pic"} />
+                    <h3>{this.props.project.name}</h3>
+                    <br/>
+                    <img src={this.props.project.imageurl} alt={this.props.project.name+"_pic"} />
                 </div>
                 <div className="project-description">
                     <p>
