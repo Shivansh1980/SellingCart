@@ -48,7 +48,7 @@ function App() {
         <HomeView></HomeView>
         <SkillsView></SkillsView>
         <div id="Projects" className="Projects">
-          <h1 align="center">PROJECTS</h1>
+          <h1>My Projects</h1>
           <div className="ProjectView">
             {projectComponents}
           </div>

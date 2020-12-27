@@ -15,6 +15,7 @@ export class ContactView extends Component {
     render() {
         return (
             <div id="Contact" className="ContactForm">
+                <h1>Contact Me</h1>
                 <p>For any extra information. Send me message </p>
                 <div>
 
@@ -38,7 +39,7 @@ export class ContactView extends Component {
                         onChange={e => this.setState({ subject: e.target.value })}
                         placeholder="Subject"
                     />
-                    <input
+                    <textarea
                         type="text"
                         value={this.state.message}
                         onChange={e => this.setState({ message: e.target.value })}
