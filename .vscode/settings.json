@@ -1,5 +1,6 @@
 {
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": true,
-    "python.linting.mypyEnabled": true
+    "python.linting.mypyEnabled": true,
+    "python.pythonPath": "C:\\Users\\ASUS\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
 }

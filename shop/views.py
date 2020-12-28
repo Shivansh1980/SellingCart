@@ -5,7 +5,6 @@ from math import ceil
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q,Max,Sum
-from channels.routing import ProtocolTypeRouter
 import json , requests ,math , random , os
 
 # import Q is used for the search functionality here Q accepts the parameter 

@@ -1,0 +1,10 @@
+django
+djangorestframework
+pylint
+mypy
+django-phonenumber-field
+coreheaders
+django-cors-headers
+phonenumbers
+requests
+pillow
