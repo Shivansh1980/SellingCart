@@ -26,9 +26,6 @@ def index(request):
     params = {'product': products,'items_count':no_of_items}
     return render(request, 'shop/home.html', params)
 
-def about(request):
-    return HttpResponse("<p style='font-size:40px' text-color:red;>This Website Officially created by Shivansh Shrivastava</p><p style='font-size:20px'>Note: Buying items after adding to Cart is Under Development but you can buy by clicking on view product</p><p>Click on back button to go back to site</p>")
-
 def contact(request):
     return HttpResponse("We are at contact")
 
@@ -144,11 +141,7 @@ def place_order_of_cart_item(request):
 # Order button on the form page.
 @login_required(login_url='login')
 def order_info_page(request, pid):
-    params = {'id': pid}
-    products = Product.objects.all().filter(id=pid)
-    product = []
-    for i in products:
-        product.append(i)
+    print("inside order info page")
     if (request.method == "POST"):
         a1 = request.POST['address1']
         a2 = request.POST['address2']
@@ -156,6 +149,9 @@ def order_info_page(request, pid):
         state = request.POST['state']
         mode = request.POST['mode']
 
+        product = list()
+        product.append(Product.objects.get(id=pid))
+        
         order_details = OrderInfo(
             customer_name=request.user,
             address1=a1,
@@ -163,54 +159,14 @@ def order_info_page(request, pid):
             state=state,
             mobile_no=phone,
             dilevery_mode=mode,
-            product=product,
+            product=Product.objects.get(id=pid),
             status="active"
             )
-        # Generating OTP and Sending it as Message
-        send_otp(phone, "Order Has Been Placed SuccessFullly , Thanks For Using SellingCart")
-        order_details.save()
+
+        #ucomment the below line to save the order details
+        #order_details.save()
+        print("product has been saved")
         params = {'product':product,'id': pid}
         return render(request, 'shop/order/orderplaced.html', params)
-        
     return render(request, 'shop/order/orderform.html', params)
 
-
-def generate_otp():
-    data = "01234567890"
-    length = len(data)
-    otp = ""
-    for i in range(5):
-        otp += data[math.floor(random.random() * length)]
-    return otp
-
-
-def sendPostRequest(reqUrl, apiKey, secretKey, useType, phoneNo, senderId, textMessage):
-    req_params = {
-        'apikey': apiKey,
-        'secret': secretKey,
-        'usetype': useType,
-        'phone': phoneNo,
-        'message': textMessage,
-        'senderid': senderId
-    }
-    return requests.post(reqUrl, req_params)
-
-
-def send_otp(phone, otp):
-    URL = 'https://www.sms4india.com/api/v1/sendCampaign'
-
-    # get response
-    response = sendPostRequest(URL, '0ZJ9Z6WT1UQ2YZWRKPEY7Z9O5APMPP6K', 'GW6NVE5OK3ZPL1B7',
-                               'stage', phone, 'SellingCart', otp)
-    print(response.text)
-
-
-@login_required(login_url='login')
-def otpview(request):
-    if (request.method == "POST"):
-        rec = request.POST['otp']
-        if (rec == otp):
-            order_details.save()
-        else:
-            return HttpResponse("<h1 class='text-success' align='center'>OTP VERIFICATION FAILED</h1>")
-    return render(request, "shop/order/orderplaced.html")
