@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import SideNavbar from './components/SideNavbar';
@@ -6,7 +5,8 @@ import HomeView from './components/HomeView';
 import SkillsView from './components/SkillsView'
 import ContactView from './components/ContactView'
 import ProjectView from './components/ProjectView'
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import $ from 'jquery';
 
 const projects = [
   {
@@ -35,6 +35,9 @@ const projects = [
 ]
 
 function App() {
+  useEffect(() => {
+    $(".loading").fadeOut("slow");
+  })
   var projectComponents = [];
   for (var i = 0; i < projects.length; i++) {
     projectComponents.push(<ProjectView project={projects[i]} />)

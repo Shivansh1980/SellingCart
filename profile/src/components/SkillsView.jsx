@@ -1,90 +1,61 @@
 import React, { Component } from 'react'
+import AOS from 'aos';
 
-export class SkillsView extends Component {
+class SkillsView extends Component {
+    componentDidMount() {
+        AOS.init()
+    }
+    componentDidUpdate() {
+        AOS.init()
+    }
+
     state = {
-        progress: 100,
-        django: 80,
-        djangorestframework: 70,
-        python: 75,
-        htmlcss: 90,
-        android: 80,
-        cpp: 90,
-        competitive: 50,
-        ethicalhacking:66,
-        kalilinux:70
+        skills: {
+            Django: 80,
+            DjangoRestFramework: 70,
+            Reactjs:60,
+            Python: 75,
+            HtmlCss: 90,  
+        },
+        otherSkills: {
+            Android: 80,
+            Cpp: 90,
+            CompetitivePrograming: 50,
+            EthicalHacking: 66,
+            KaliLinux: 70
+        }
     }
     render() {
         return (
-            <div>
-                <div id="skillbox" className="Skills">
+            <div className="SkillSet">
+                <div id="skillbox" data-aos="flip-left" data-aos-duration="2000" className="Skills">
                     <h1 align="center">Skills</h1>
-                    <div className="Barbox">
-                        <p>Django</p>
-                        <div className="bar">
-                            <div className="Django" style={{ width: this.state.django + "%" }}></div>
-                            <p>80%</p>
-                        </div>
-                    </div>
-                    <div className="Barbox">
-                        <p>Django Rest Framework</p>
-                        <div className="bar">
-                            <div className="DjangoRestFramework" style={{ width: this.state.djangorestframework + "%" }}></div>
-                            <p>70%</p>
-                        </div>
-                    </div>
-                    <div className="Barbox">
-                        <p>Python</p>
-                        <div className="bar">
-                            <div className="Python" style={{ width: this.state.python + "%" }}></div>
-                            <p>75%</p>
-                        </div>
-                    </div>
-                    <div className="Barbox" width="70%">
-                        <p>HTML and CSS</p>
-                        <div className="bar">
-                            <div className="HtmlCss" style={{ width: this.state.htmlcss + "%" }}></div>
-                            <p>90%</p>
-                        </div>
-                    </div>
-                    <div className="Barbox">
-                        <p>AndroidDevelopment</p>
-                        <div className="bar">
-                            <div className="AndroidDevelopment" style={{ width: this.state.android + "%" }}></div>
-                            <p>80%</p>
-                        </div>
-                    </div>
+                    {
+                        Object.entries(this.state.skills).map(([name, value]) => (
+                            <div className="Barbox">
+                                <p>{name}</p>
+                                <div className="bar">
+                                    <div data-aos="animate-bar" data-aos-offset="100%" className={name} style={{ width: value + "%" }}></div>
+                                    <p>{value + "%"}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
 
-                <div id="skillbox-2" className="Skills">
+                <div id="skillbox-2" data-aos="flip-right" data-aos-duration="1500" className="Skills">
                     <h1 align="center">Other Skills</h1>
-                    <div className="Barbox">
-                        <p>C++</p>
-                        <div className="bar">
-                            <div className="C++" style={{ width: this.state.cpp + "%" }}></div>
-                            <p>90%</p>
-                        </div>
-                    </div>
-                    <div className="Barbox">
-                        <p>Competitive Programing</p>
-                        <div className="bar">
-                            <div className="Competitive" style={{ width: this.state.competitive + "%" }}></div>
-                            <p>50%</p>
-                        </div>
-                    </div>
-                    <div className="Barbox">
-                        <p>Ethical Hacking</p>
-                        <div className="bar">
-                            <div className="EthicalHacking" style={{ width: this.state.ethicalhacking + "%" }}></div>
-                            <p>66%</p>
-                        </div>
-                    </div>
-                    <div className="Barbox" width="70%">
-                        <p>Kali Linux</p>
-                        <div className="bar">
-                            <div className="Kalilinux" style={{ width: this.state.kalilinux + "%" }}></div>
-                            <p>70%</p>
-                        </div>
-                    </div>
+                    {
+                        Object.entries(this.state.otherSkills).map(([name, value]) => (
+                            <div className="Barbox">
+                                <p>{name}</p>
+                                <div className="bar">
+                                    <div className={name} data-aos="animate-bar" data-aos-offset="100%" style={{ width: value + "%" }}></div>
+                                    <p>{value + "%"}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         )

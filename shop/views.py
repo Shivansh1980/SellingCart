@@ -15,6 +15,9 @@ from django.db.models import Q
 global no_of_items
 @login_required(login_url='login')
 def index(request):
+    f = open(".\shop\product_categories.txt",'r')
+    categories_list = f.readlines()
+
     cart_items = CartItem.objects.filter(customer_name=request.user)
     max_item_dict = cart_items.aggregate(Sum('item_quantity'))
     no_of_items = 0
@@ -23,7 +26,17 @@ def index(request):
     else:
         no_of_items = max_item_dict['item_quantity__sum']
     products = Product.objects.all()
-    params = {'product': products,'items_count':no_of_items}
+    categories = list()
+    for category in categories_list:
+        newlist = []
+        for pr in products:
+            if pr.category.lower() == category.lower().strip():
+                newlist.append(pr)
+
+        if len(newlist) != 0:
+            categories.append(newlist)
+
+    params = {'categories': categories,'items_count':no_of_items}
     return render(request, 'shop/home.html', params)
 
 def contact(request):

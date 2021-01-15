@@ -1,9 +1,15 @@
-import React, { Component } from 'react'
-
+import React, { Component } from 'react';
+import AOS from 'aos';
 export class ProjectView extends Component {
+    componentDidMount() {
+        AOS.init()
+    }
+    componentDidUpdate() {
+        AOS.init()
+    }
     render() {
         return (
-            <div className="project">
+            <div data-aos="fade-up" data-aos-duration="1500" className="project">
                 <div className="project-header">
                     <h3>{this.props.project.name}</h3>
                     <br/>

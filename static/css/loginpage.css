@@ -75,10 +75,14 @@
 		width: 99%;
     }
     .login-box{
-        height: 50%;
+        height: auto;
         margin: auto auto;
     }
     .flexbox input, .flexbox button{
         font-size: 10px;
+    }
+    a{
+        font-size: 13px;
+        padding: 10px;
     }
 }

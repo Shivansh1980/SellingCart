@@ -14,7 +14,7 @@ export class ContactView extends Component {
 
     render() {
         return (
-            <div id="Contact" className="ContactForm">
+            <div id="Contact" data-aos="zoom-in" data-aos-duration="2000" className="ContactForm">
                 <h1>Contact Me</h1>
                 <p>For any extra information. Send me message </p>
                 <div>
