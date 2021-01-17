@@ -1,6 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
+import {animateText} from '../animations'
 
 export class HomeView extends Component {
+    componentDidMount() {
+        animateText("Introduction");
+    }
     render() {
         return (
             <div className="HomeView">

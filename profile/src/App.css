@@ -12,6 +12,8 @@ html{
   list-style: none;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: 'Potta One', cursive;
+  font-weight: lighter;
 }
 ::-webkit-scrollbar{
   width: 12px;
@@ -58,7 +60,6 @@ html{
 }
 .SideNavbar ul li:hover {
   background-color: black;
-  font-weight: bold;
   padding: 5px 10px;
 }
 .SideNavbar ul li img{
@@ -69,7 +70,6 @@ html{
   color:white;
   text-align: center;
   font-size: 18px;
-  font-weight: 600;
 }
 
 .Main{
@@ -86,16 +86,10 @@ html{
   overflow: hidden;
   
 }
-.HomeView p{
-  font-weight: bolder;
-}
 .HomeView img{
   line-height: 0px;
   min-width: 100px;
   max-width: 400px;
-}
-.Introduction{
-  font-size: 30px;
 }
 @media (max-width: 600px) {
   .Header{
@@ -155,7 +149,6 @@ html{
   right: 0;
   color:green;
   text-shadow: 0 0 10px green;
-  font-weight: bold;
 }
 
 @keyframes skill{
@@ -189,9 +182,14 @@ html{
   max-width: 300px;
   background-color: white;
   border-radius: 10px;
-  height: 300px;
+  min-height: 400px;
+  max-height: 450px;
   padding: 20px;
   max-width: 250px;
+  overflow: scroll;
+}
+.project::-webkit-scrollbar{
+  display: none;
 }
 
 .project img{

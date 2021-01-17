@@ -18,18 +18,20 @@
   {% block body %}
   <div class="container" style="margin-top: 50px;">
       {% for category in categories|slice:"0:"%}
+      <h1 align="center">{{category.0.category}}</h1>
       <div class="items {{category.0.category|lower}}">
-        <h1 align="center">{{category.0.category}}</h1>
         {%for pr in category%}
+        <div class="card-cover">
           <div class="card" style="width: 18rem;">
             <img src='/media/{{pr.image}}' class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title" id="name">{{pr.product_name}}</h5>
-                <p class="card-text">{{pr.desc}}</p>
+                <p class="card-text">Price : {{pr.price}}</p>
                 <button onclick="addtocart()" id="{{pr.id}}" class="btn btn-primary CartID">Add To Cart</button>
                 <a id="qv{{i.id}}" href="{%url 'product_view' id=pr.id%}" class="btn btn-primary">View Product</a>
               </div>
           </div>
+        </div>
         {%endfor%}
       </div>
       {% endfor %}

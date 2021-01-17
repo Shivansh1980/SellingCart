@@ -154,6 +154,7 @@ def place_order_of_cart_item(request):
 # Order button on the form page.
 @login_required(login_url='login')
 def order_info_page(request, pid):
+    params = {'id':pid}
     print("inside order info page")
     if (request.method == "POST"):
         a1 = request.POST['address1']
@@ -181,5 +182,5 @@ def order_info_page(request, pid):
         print("product has been saved")
         params = {'product':product,'id': pid}
         return render(request, 'shop/order/orderplaced.html', params)
-    return render(request, 'shop/order/orderform.html', params)
+    return render(request, 'shop/order/orderform.html',params)
 
