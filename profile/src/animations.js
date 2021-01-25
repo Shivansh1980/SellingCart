@@ -59,4 +59,4 @@ function getPositionById(id) {
     alert($(id).position());
     return $(id).position();
 }
-export {animateText, addSpansToText, addHtmlToClass}
+export { animateText, addSpansToText, addHtmlToClass}
