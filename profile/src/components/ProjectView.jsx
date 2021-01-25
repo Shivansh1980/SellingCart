@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import AOS from 'aos';
+import { animateText } from '../animations'
 export class ProjectView extends Component {
     componentDidMount() {
-        AOS.init()
+        AOS.init();
     }
     componentDidUpdate() {
         AOS.init()
@@ -16,11 +17,11 @@ export class ProjectView extends Component {
                     <img src={this.props.project.imageurl} alt={this.props.project.name+"_pic"} />
                 </div>
                 <div className="project-description">
-                    <p>
-                        <span className="descriptions">Technology Used :</span> {this.props.project.tech_used}
+                    <p className="descriptions">
+                        Technology Used : {this.props.project.tech_used}
                     </p>
-                    <p>
-                        <span className="descriptions">Description : </span> {this.props.project.description}
+                    <p className="descriptions">
+                       Description : {this.props.project.description}
                     </p>
                 </div>
             </div>
