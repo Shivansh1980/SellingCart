@@ -5,7 +5,8 @@ from math import ceil
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q,Max,Sum
-import json , requests ,math , random , os
+import json, requests, math, random, os
+from SellingCart import settings
 
 # import Q is used for the search functionality here Q accepts the parameter 
 # that are available in the models.py with __icontains as extension and search that (Read more about this at last of your java copy)
@@ -15,7 +16,8 @@ from django.db.models import Q
 global no_of_items
 @login_required(login_url='login')
 def index(request):
-    f = open(".\shop\product_categories.txt",'r')
+    product_category_text = os.path.join(settings.BASE_DIR, "shop\product_categories.txt")
+    f = open(product_category_text, 'r')
     categories_list = f.readlines()
 
     cart_items = CartItem.objects.filter(customer_name=request.user)
