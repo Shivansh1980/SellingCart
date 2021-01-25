@@ -130,6 +130,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 MEDIA_ROOT = os.path.join(BASE_DIR,'static/media/') # Its a container where the user will upload the media in this media directory(os.path.join is used to join the directory) (here the BASE_DIR means the main directory selling cart which is joined with media directory)
 MEDIA_URL = '/media/'  # it provide the url to the user to upload the media in the django admin pannel . To do this you have to update the urls of the BASE_DIR and have to add these lists to the urlpatters
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/'),
