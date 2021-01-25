@@ -16,6 +16,7 @@ from django.db.models import Q
 global no_of_items
 @login_required(login_url='login')
 def index(request):
+    url = "https://raw.githubusercontent.com/Github-Shivansh/SellingCart/master/shop/product_categories.txt"
     product_category_text = os.path.join(settings.BASE_DIR, "shop/product_categories.txt")
     f = open(product_category_text, 'r')
     categories_list = f.readlines()
