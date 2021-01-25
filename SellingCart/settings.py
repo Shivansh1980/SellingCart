@@ -27,7 +27,7 @@ DEBUG = True
 
 ################ Here you need to put ALLOWED_HOSTS = [] if something wrong happeninng because due to some error you removed it ####################
 ALLOWED_HOSTS = ["127.0.0.1", "192.168.43.55",
-                 "localhost", "polished-morning-29118.pktriot.net"]
+                 "localhost", "polished-morning-29118.pktriot.net","github-shivansh-sellingcart.zeet.app"]
 # Application definition
 
 INSTALLED_APPS = [
