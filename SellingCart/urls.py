@@ -35,4 +35,4 @@ urlpatterns = [
     path('profile/', TemplateView.as_view(template_name = 'index.html'),name='Profile'),
     path("api/",include(router.urls)),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-
+print(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))

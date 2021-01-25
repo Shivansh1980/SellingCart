@@ -1,0 +1,53 @@
+
+                <---------------------------IMPORTANT MUST READ IT TO LEARN STATIC --------------------------------------->
+
+
+1.Static Files are css files , images , javascript files that we can save in browser but during production we didnt let django 
+  to save our file instead we use AWS
+
+2.Go in urls of base Directory First
+
+3.Now there you need to import staticfiles_urlpatterns from django.contrib.staticfiles.urls
+  and then add following line -->
+
+  urlpatterns += staticfiles_urlpatterns()
+
+
+4.Now Go to settings.py there at last you will see the following line
+        STATIC_URL = '/static/'
+
+    This is the address that tells django that there you need to go to find your static Files
+    For Ex: 1.if you want to find the style.css in the static files directory then what you need to write in the url of 
+              browser is localhost:port/static/app_name/style.css or localhost:port/static/style.css 
+
+            2. now suppose you changed the url STATIC_URL = '/assets/' then in url instead of localhost:port/static/style.css
+               you will write localhost:port/assets/style.css
+
+
+5.Now since django dont know that where you have this static directory so you need to tell django this by using the code : 
+
+        STATIC_DIR = {
+            os.path.join(BASE_DIR,'assests')
+        }
+
+    This means there is folder named assests where you are going to put your static files and that folder is located just one above 
+    the Base_Dir(main directory that contains settings.py)
+
+    Note : in our project instead of assests we named that folder media
+
+6.Now the point is since we have now our static files(style.css) in our assets directory then how we can connect it to our templates 
+    we can do it by just giving the path of our static files in our template :
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    this is the hardcoding method i.e. suppose due to somereason you have changed 
+    Static_url from static to assest then you need to change the path in every template.
+    to avoid it we have another method using jinja coding as given below
+
+7.Write in template in begining {%load static from staticfiles%}
+  now instead of providing url in href we can write
+  href = "{% static 'style.css' %}"
+
+
+
+
