@@ -60,7 +60,7 @@ ROOT_URLCONF = 'SellingCart.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates',os.path.join(BASE_DIR,'profile/build/')],
+        'DIRS': ['templates','profile/build/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
