@@ -6,6 +6,7 @@ html{
   color:white;
   box-sizing: border-box;
 }
+
 *{
   padding: 0;
   margin: 0;
@@ -78,7 +79,7 @@ html{
 }
 
 .Main{
-  display: flex;
+  display: none;
   flex-direction: column;
   margin-top: 10px;
   margin-left: 90px;

@@ -5,8 +5,6 @@ import HomeView from '../HomeView';
 import SkillsView from '../SkillsView'
 import ContactView from '../ContactView'
 import ProjectView from '../ProjectView'
-import { useEffect } from 'react';
-import $ from 'jquery';
 
 const projects = [
     {
@@ -14,7 +12,7 @@ const projects = [
         'tech_used': 'Django, Django Rest Framework, React Js, HTML5 and CSS3',
         'link': 'https://github.com/Shivansh1980/SellingCart',
         'description': '',
-        'imageurl': process.env.PUBLIC_URL + "/static/images/SellingCart.png"
+        'imageurl': process.env.PUBLIC_URL + "/static/images/SellingCart.PNG"
     },
 
     {
@@ -22,7 +20,7 @@ const projects = [
         'tech_used': 'Android Studio, Java',
         'link': 'https://github.com/Shivansh1980/iCLOCK',
         'description': '',
-        'imageurl': process.env.PUBLIC_URL + "/static/images/SellingCart.png"
+        'imageurl': process.env.PUBLIC_URL + "/static/images/SellingCart.PNG"
     },
 
     {
@@ -30,7 +28,7 @@ const projects = [
         'tech_used': 'Django, Django Rest Framework, Python, HTML5 and CSS3',
         'link': 'https://github.com/Shivansh1980/doc-converter',
         'description': '',
-        'imageurl': process.env.PUBLIC_URL + "/static/images/SellingCart.png"
+        'imageurl': process.env.PUBLIC_URL + "/static/images/SellingCart.PNG"
     }
 ]
 
