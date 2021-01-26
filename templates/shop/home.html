@@ -26,7 +26,7 @@
             <img src='/media/{{pr.image}}' class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title" id="name">{{pr.product_name}}</h5>
-                <p class="card-text">Price : {{pr.price}}</p>
+                <p class="card-text">Price : Rs.{{pr.price}}</p>
                 <button onclick="addtocart()" id="{{pr.id}}" class="btn btn-primary CartID">Add To Cart</button>
                 <a id="qv{{i.id}}" href="{%url 'product_view' id=pr.id%}" class="btn btn-primary">View Product</a>
               </div>
