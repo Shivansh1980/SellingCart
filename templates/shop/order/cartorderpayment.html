@@ -3,13 +3,33 @@
 {%block css%}
     <link rel="stylesheet" href="{%static 'css/productlist.css'%}">
     <style>
-        .container{
-            margin-left: 10%;
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .card{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card-img-top{
+            width: 50%;
+            height: 50%;
+        }
+        .items{
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 {%endblock%}
+
 {%block body%}
     <div class="container" style="margin-top: 50px;">
+        <div class="items">
+            {%for pr in products%}
             <div class="card-cover">
                 <div class="card" style="width: 18rem;">
                     <img src='/media/{{pr.image}}' class="card-img-top" alt="...">
@@ -19,12 +39,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+        {% endfor %}
         <div id="paypal-button-container"></div>
     </div>
-    
 {%endblock%}
     <!-- Include the PayPal JavaScript SDK -->
 {%block javascript%}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYsN1t130OxOlK9wHEgGYoqnKQHa9z8kM0g5_YNb7mpj-eWcIySXIFJE4k_F6JBbywiZifINW6wNGL9b&currency=USD"></script>
+    
     <script>
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
@@ -42,12 +66,11 @@
 
             // Finalize the transaction
             onApprove: function (data, actions) {
-                window.location.href = "{%url 'placeoneitem' pid=pr.id%}"
+                 window.location.href = "{%url 'placeorderofcartitems'%}";
                 return actions.order.capture().then(function (details) {
                     // Show a success message to the buyer
                 });
             }
         }).render('#paypal-button-container');
     </script>
-</body>
 {%endblock%}

@@ -17,28 +17,30 @@
 
   {% block body %}
   <div class="container" style="margin-top: 50px;">
-      {% for category in categories|slice:"0:"%}
-      <h1 align="center">{{category.0.category}}</h1>
-      <div class="items {{category.0.category|lower}}">
-        {%for pr in category%}
-        <div class="card-cover">
-          <div class="card" style="width: 18rem;">
-            <img src='/media/{{pr.image}}' class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title" id="name">{{pr.product_name}}</h5>
-                <p class="card-text">Price : Rs.{{pr.price}}</p>
-                <button onclick="addtocart()" id="{{pr.id}}" class="btn btn-primary CartID">Add To Cart</button>
-                <a id="qv{{i.id}}" href="{%url 'product_view' id=pr.id%}" class="btn btn-primary">View Product</a>
-              </div>
-          </div>
+    {% for category in categories|slice:"0:"%}
+    <h1 align="center">{{category.0.category}}</h1>
+    <div class="items {{category.0.category|lower}}">
+      {%for pr in category%}
+      <div class="card-cover">
+        <div class="card" style="width: 18rem;">
+          <img src='/media/{{pr.image}}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title" id="name">{{pr.product_name}}</h5>
+              <p class="card-text">Price : Rs.{{pr.price}}</p>
+              <button onclick="addtocart()" id="{{pr.id}}" class="btn btn-primary CartID">Add To Cart</button>
+              <a id="qv{{i.id}}" href="{%url 'product_view' id=pr.id%}" class="btn btn-primary">View Product</a>
+            </div>
         </div>
-        {%endfor%}
       </div>
-      {% endfor %}
+      {%endfor%}
+    </div>
+    {% endfor %}
   </div>
 {% endblock %}
 {% block javascript%}
 <!--Here We are going to write a function that on click get the product id-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
       $(".CartID").click(function() {
           var count = parseInt($("#cart_count").text()); 

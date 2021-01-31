@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q,Max,Sum
 import json, requests, math, random, os
 from SellingCart import settings
+from django.views.decorators.csrf import csrf_exempt
+
 
 # import Q is used for the search functionality here Q accepts the parameter 
 # that are available in the models.py with __icontains as extension and search that (Read more about this at last of your java copy)
@@ -124,7 +126,7 @@ def order_from_cart(request):
     details_of_product = {'product': ordered_item, 'price': price}
     return render(request, "shop/order/cartorderform.html", details_of_product)
 
-
+@csrf_exempt
 def place_order_of_cart_item(request):
     products = CartItem.objects.all().filter(customer_name=request.user)
     product = []
@@ -187,3 +189,21 @@ def order_info_page(request, pid):
         return render(request, 'shop/order/orderplaced.html', params)
     return render(request, 'shop/order/orderform.html',params)
 
+def order_payment_for_cart_items(request):
+    products = CartItem.objects.all().filter(customer_name=request.user)
+    product = []
+    for i in products:
+        items = Product.objects.get(id=i.product_detail.id)
+        product.append(items)
+    return render(request,'shop/order/cartorderpayment.html',{'products':product})
+
+
+def order_one_item_payment_page(request, pid):
+    product = Product.objects.get(id=pid)
+    return render(request, 'shop/order/orderpayment.html', {'pr': product})
+    
+def place_order_of_one_item(request, pid):
+    product = Product.objects.get(id=pid)
+    products = []
+    products.append(product)
+    return render(request, 'shop/order/orderplaced.html',{'product':products})
